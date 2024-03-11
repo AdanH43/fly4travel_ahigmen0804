@@ -27,7 +27,6 @@
         #Aqui distintas vistas de equipo (vistas diferentes, mismo modelo)
         'views/vistas.xml',
         #Vista a un informe
-        'report/flights_report_reservas.xml',
         
         
 
