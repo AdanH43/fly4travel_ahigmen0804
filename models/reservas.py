@@ -12,18 +12,6 @@ class Reservas(models.Model):
     asientos_disponibles = fields.Many2one('flights.vuelos')
 
 
-    @api.model
-    def create(self, vals):
-        reserva = super(Vuelos, self).create(vals)
-        reserva.vehiculo_id.write({'estado': 'alquilado'})
-        return reserva
-
-    def unlink(self):
-        for reserva in self:
-            reserva.vehiculo_id.write({'estado': 'disponible'})
-        return super(Reservas, self).unlink()
-
-
     @api.constrains('fecha_reserva')
     def _check_fecha_inicio(self):
         for reserva in self:
