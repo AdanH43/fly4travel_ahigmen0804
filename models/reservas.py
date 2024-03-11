@@ -10,6 +10,14 @@ class Reservas(models.Model):
     fecha_reserva = fields.Date('Fecha  de la reserva', required=True)
     asientos_reservados = fields.Integer(default = 1)
     asientos_disponibles = fields.Many2one('flights.vuelos')
+    
+
+    @api.depends('numero_asientos', 'reservas.asientos_reservados')
+    def _compute_asientos_disponibles(self):
+        for vuelo in self:
+            asientos_reservados = sum(reserva.asientos_reservados for reserva in vuelo.reservas)
+            vuelo.asientos_disponibles = vuelo.numero_asientos - asientos_reservados
+
 
 
     @api.constrains('fecha_reserva')
