@@ -13,8 +13,8 @@ class Vuelos(models.Model):
     nombre = fields.Char('Nombre del vuelo', required=True, index=True)
     fecha_inicio = fields.Date('Fecha del vuelo', required=True)
     duracion = fields.Char('Duracion', required = True, index = True)
-    numero_asientos = fields.Integer('Numero de asientos', required= True, default= 1)
-    asientos_disponibles = fields.Integer('Numero de asientos disponibles', default = numero_asientos)
+    numero_asientos = fields.Integer(default= 1)
+    asientos_disponibles = fields.Integer(default = numero_asientos)
 
 
     @api.constrains('fecha_inicio')

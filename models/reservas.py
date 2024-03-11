@@ -8,7 +8,7 @@ class Reservas(models.Model):
 
     cliente_id = fields.Many2one('flights.clientes', string='Cliente', required=True)
     fecha_reserva = fields.Date('Fecha  de la reserva', required=True)
-    asientos_reservados = fields.Integer('asientos de la reserva', default = 1)
+    asientos_reservados = fields.Integer(default = 1)
     asientos_disponibles = fields.Many2one('flights.vuelos')
 
 
