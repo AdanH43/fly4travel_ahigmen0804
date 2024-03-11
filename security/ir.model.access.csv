@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acl_clientes_gerencia,reservas.clientes_default,model_renting_clientes,group_gerencia,1,1,1,1
+acl_reservas_gerencia,renting.reservas_default,model_renting_reservas,group_gerencia,1,1,1,1
+acl_vehiculos_gerencia,renting.vehiculos_default,model_renting_vehiculos,group_gerencia,1,1,1,1
+
+acl_clientes_compras,reservas.clientes_default,model_renting_clientes,group_compras,0,0,0,0
+acl_reservas_compras,renting.reservas_default,model_renting_reservas,group_compras,0,0,0,0
+acl_vehiculos_compras,renting.vehiculos_default,model_renting_vehiculos,group_compras,1,1,1,1
+
+acl_clientes_reservas,reservas.clientes_default,model_renting_clientes,group_reservas,1,1,1,1
+acl_reservas_reservas,renting.reservas_default,model_renting_reservas,group_reservas,1,1,1,1
+acl_vehiculos_reservas,renting.vehiculos_default,model_renting_vehiculos,group_reservas,1,0,0,0
+
+
+

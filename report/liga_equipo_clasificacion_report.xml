@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Plantilla del informe -->
+    <template id="report_renting_reserva">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2>Reserva: <span t-field="doc.id" /></h2>
+                        <p>Vehículo: <span t-field="doc.vehiculo_id.name" /></p>
+                        <p>Fecha de inicio: <span t-field="doc.fecha_inicio" /></p>
+                        <!-- Agrega más campos de reserva según sea necesario -->
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    
+    <!-- Definición del informe -->
+    <report
+        id="report_renting_reserva"
+        model="renting.reservas"
+        string="Informe de Reserva"
+        name="2rent4fun_Ahigmen0804.report_renting_reservas"
+        file="2rent4fun_Ahigmen0804.report_renting_reservas"
+        report_type="qweb-pdf" />
+</odoo>
