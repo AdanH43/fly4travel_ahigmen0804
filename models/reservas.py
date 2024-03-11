@@ -1,14 +1,19 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta
 
-class RentingReservas(models.Model):
+class Reservas(models.Model):
 
-    _name = 'renting.reservas'
-    _description = 'Reservas de vehículos'
+    _name = 'flights.reservas'
+    _description = 'Reservas de vuelos'
 
-    cliente_id = fields.Many2one('renting.clientes', string='Cliente', required=True)
-    vehiculo_id = fields.Many2one('renting.vehiculos', string='Vehículo', required=True)
-    fecha_inicio = fields.Date('Fecha de inicio', required=True)
+    cliente_id = fields.Many2one('flights.clientes', string='Cliente', required=True)
+    fecha_reserva = fields.Date('Fecha  de la reserva', required=True)
+    asientos_reservados = fields.Integer('asientos de la reserva', default = 1)
+
+
+
+
+
 
     @api.model
     def create(self, vals):
@@ -24,9 +29,8 @@ class RentingReservas(models.Model):
         return super(RentingReservas, self).unlink()
 
 
-    @api.constrains('fecha_inicio')
+    @api.constrains('fecha_reserva')
     def _check_fecha_inicio(self):
-        today = fields.Date.today()
         for reserva in self:
-            if reserva.fecha_inicio < today:
-                raise ValidationError("La fecha de inicio debe ser hoy o un dia posterior.")
+            if reserva.fecha_reserva < fields.Date.today():
+                raise ValidationError("La fecha de reserva debe ser hoy o un dia posterior.")

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+
+        <!-- Menú para el módulo -->
+        <menuitem id="menu_fly4travel_ahigmen0804" name="Flights fly4travel Ahigmen0804" sequence="10"/>
+
+        <!-- Acciones para abrir las vistas de lista de vehículos, clientes y alquileres -->
+        <record id="action_clientes" model="ir.actions.act_window">
+            <field name="name">Clientes</field>
+            <field name="res_model">flights.clientes</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_vuelos" model="ir.actions.act_window">
+            <field name="name">Vuelos</field>
+            <field name="res_model">flights.vuelos</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_reservas" model="ir.actions.act_window">
+            <field name="name">Reservas</field>
+            <field name="res_model">flights.reservas</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú desplegable en el menú principal -->
+        <menuitem id="menu_fly4travel_ahigmen0804_main" name="Flights fly4travel Ahigmen0804" parent="menu_fly4travel_ahigmen0804"/>
+        
+        <!-- Submenús para vehículos, clientes y alquileres -->
+        <menuitem id="menu_clientes" name="Clientes" parent="menu_fly4travel_ahigmen0804_main" action="action_clientes"/>
+        <menuitem id="menu_vuelos" name="Vuelos" parent="menu_fly4travel_ahigmen0804_main" action="action_vuelos"/>
+        <menuitem id="menu_reservas" name="Reservas" parent="menu_fly4travel_ahigmen0804_main" action="action_reservas"/>
+
+        <!-- Vista de árbol para vehículos -->
+        <record id="view_clientes_tree" model="ir.ui.view">
+            <field name="name">flights.clientes.tree</field>
+            <field name="model">flights.clientes</field>
+            <field name="arch" type="xml">
+                <tree string="Clientes">
+                    <field name="nombre"/>
+                    <field name="apellidos"/>
+                    <field name="identificacion"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de árbol para clientes -->
+        <record id="view_vuelos_tree" model="ir.ui.view">
+            <field name="name">flights.vuelos.tree</field>
+            <field name="model">flights.vuelos</field>
+            <field name="arch" type="xml">
+                <tree string="Vuelos">
+                    <field name="nombre"/>
+                    <field name="fecha_inicio"/>
+                    <field name="duracion"/>
+                    <field name="numero_asientos"/>
+                    <field name="asientos_disponibles"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de árbol para reservas (alquileres) -->
+        <record id="view_reservas_tree" model="ir.ui.view">
+            <field name="name">flights.reservas.tree</field>
+            <field name="model">flights.reservas</field>
+            <field name="arch" type="xml">
+                <tree string="Reservas">
+                    <field name="cliente_id"/>
+                    <field name="fecha_reserva"/>
+                    <field name="asientos_reservados" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+ <!-- Vista de formulario para vehículos -->
+        <record id="view_clientes_form" model="ir.ui.view">
+            <field name="name">flights.clientes.form</field>
+            <field name="model">flights.clientes</field>
+            <field name="arch" type="xml">
+                <form string="Vehículos">
+                    <sheet>
+                        <group>
+                            <field name="nombre"/>
+                            <field name="apellidos"/>
+                            <field name="identificacion"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para clientes -->
+        <record id="view_vuelos_form" model="ir.ui.view">
+            <field name="name">flights.vuelos.form</field>
+            <field name="model">flights.vuelos</field>
+            <field name="arch" type="xml">
+                <form string="Clientes">
+                    <sheet>
+                        <group>
+                            <field name="nombre"/>
+                            <field name="fecha_inicio"/>
+                            <field name="duracion"/>
+                            <field name="numero_asientos"/>
+                            <field name="asientos_disponibles"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para reservas (alquileres) -->
+        <record id="view_renting_reservas_form" model="ir.ui.view">
+            <field name="name">flights.reservas.form</field>
+            <field name="model">flights.reservas</field>
+            <field name="arch" type="xml">
+                <form string="Alquileres">
+                    <sheet>
+                        <group>
+                            <field name="cliente_id"/>
+                            <field name="fecha_reserva"/>
+                            <field name="asientos_reservados" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    
+</odoo>
