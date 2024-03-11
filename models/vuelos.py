@@ -27,8 +27,6 @@ class Vuelos(models.Model):
             asientos_reservados = sum(reserva.asientos_reservados for reserva in vuelo.reservas)
             vuelo.asientos_disponibles = vuelo.numero_asientos - asientos_reservados
 
-
-
     @api.constrains('fecha_inicio')
     def _check_fecha_inicio(self):
         for reserva in self:

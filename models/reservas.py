@@ -11,15 +11,6 @@ class Reservas(models.Model):
     asientos_reservados = fields.Integer(default = 1)
     asientos_disponibles = fields.Many2one('flights.vuelos')
 
-    @api.constrains('asientos_reservados')
-    def _check_asientos_disponibles(self):
-        for reserva in self:
-            vuelo = self.env['flights.vuelos'].browse(reserva.asientos_disponibles.id)
-            if vuelo.asientos_disponibles < reserva.asientos_reservados:
-                raise ValidationError("No hay suficientes asientos disponibles para este vuelo.")
-
-
-
     @api.constrains('fecha_reserva')
     def _check_fecha_inicio(self):
         for reserva in self:
