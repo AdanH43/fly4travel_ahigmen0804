@@ -14,12 +14,19 @@ class Vuelos(models.Model):
     fecha_inicio = fields.Date('Fecha del vuelo', required=True)
     duracion = fields.Char('Duracion', required = True, index = True)
     numero_asientos = fields.Integer(default= 1)
-    asientos_disponibles = fields.Integer(default = 1)
+    asientos_disponibles = fields.Integer(compute='_compute_asientos_disponibles', store=True)
 
 
     _sql_constraints = [
         ('name_uniq', 'UNIQUE (nombre)', 'El nombre debe ser unica')
     ]
+
+    @api.depends('numero_asientos', 'reservas.asientos_reservados')
+    def _compute_asientos_disponibles(self):
+        for vuelo in self:
+            asientos_reservados = sum(reserva.asientos_reservados for reserva in vuelo.reservas)
+            vuelo.asientos_disponibles = vuelo.numero_asientos - asientos_reservados
+
 
 
     @api.constrains('fecha_inicio')
