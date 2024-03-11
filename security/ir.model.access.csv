@@ -1,16 +1,16 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-acl_clientes_reservas,flights.clientes_default,model_clientes,group_reservas,1,1,1,1
-acl_reservas_reservas,flights.reservas_default,model_reservas,group_reservas,1,1,1,1
-acl_vuelos_reservas,flights.vuelos_default,model_vuelos,group_reservas,1,0,0,0
+acl_clientes_reservas,flights.clientes_default,model_flights_clientes,group_reservas,1,1,1,1
+acl_reservas_reservas,flights.reservas_default,model_flights_reservas,group_reservas,1,1,1,1
+acl_vuelos_reservas,flights.vuelos_default,model_flights_vuelos,group_reservas,1,0,0,0
 
-acl_clientes_vuelos,flights.clientes_default,model_clientes,group_vuelos,0,0,0,0
-acl_reservas_vuelos,flights.reservas_default,model_reservas,group_vuelos,0,0,0,0
-acl_vuelos_vuelos,flights.vuelos_default,model_vuelos,group_vuelos,1,1,1,1
+acl_clientes_vuelos,flights.clientes_default,model_flights_clientes,group_vuelos,0,0,0,0
+acl_reservas_vuelos,flights.reservas_default,model_flights_reservas,group_vuelos,0,0,0,0
+acl_vuelos_vuelos,flights.vuelos_default,model_flights_vuelos,group_vuelos,1,1,1,1
 
-acl_clientes_agencia,flights.clientes_default,model_clientes,group_agencia,1,1,1,1
-acl_reservas_agencia,flights.reservas_default,model_reservas,group_agencia,1,1,1,1
-acl_vuelos_agencia,flights.vuelos_default,model_vuelos,group_agencia,1,1,1,1
+acl_clientes_agencia,flights.clientes_default,model_flights_clientes,group_agencia,1,1,1,1
+acl_reservas_agencia,flights.reservas_default,model_flights_reservas,group_agencia,1,1,1,1
+acl_vuelos_agencia,flights.vuelos_default,model_flights_vuelos,group_agencia,1,1,1,1
 
 
 
