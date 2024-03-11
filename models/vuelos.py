@@ -17,6 +17,11 @@ class Vuelos(models.Model):
     asientos_disponibles = fields.Integer(default = 1)
 
 
+    _sql_constraints = [
+        ('name_uniq', 'UNIQUE (nombre)', 'El nombre debe ser unica')
+    ]
+
+
     @api.constrains('fecha_inicio')
     def _check_fecha_inicio(self):
         for reserva in self:
