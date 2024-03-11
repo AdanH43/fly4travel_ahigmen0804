@@ -24,7 +24,7 @@ class Vuelos(models.Model):
     @api.depends('numero_asientos', 'reservas.asientos_reservados')
     def _compute_asientos_disponibles(self):
         for vuelo in self:
-            asientos_reservados = sum(reserva.asientos_reservados for reserva in vuelo.reservas)
+            asientos_reservados = sum(reservas.asientos_reservados for reservas in vuelo.reservas)
             vuelo.asientos_disponibles = vuelo.numero_asientos - asientos_reservados
 
     @api.constrains('fecha_inicio')
