@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Renting",  # Titulo del módulo
+    'name': "Flights",  # Titulo del módulo
     'summary': "Modulo realizado por Ahigmen0804, SGE 23-24",  # Resumen de la funcionaliadad
     'description': """
     ==============
@@ -25,9 +25,9 @@
         'security/groups.xml',
         'security/ir.model.access.csv',
         #Aqui distintas vistas de equipo (vistas diferentes, mismo modelo)
-        'views/renting.xml',
+        'views/vistas.xml',
         #Vista a un informe
-        'report/liga_equipo_clasificacion_report.xml',
+        'report/flights_report_reservas.xml',
         
         
 

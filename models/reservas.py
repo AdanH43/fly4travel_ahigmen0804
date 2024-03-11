@@ -9,24 +9,19 @@ class Reservas(models.Model):
     cliente_id = fields.Many2one('flights.clientes', string='Cliente', required=True)
     fecha_reserva = fields.Date('Fecha  de la reserva', required=True)
     asientos_reservados = fields.Integer('asientos de la reserva', default = 1)
-
-
-
-
+    asientos_disponibles = fields.Many2one('flights.vuelos')
 
 
     @api.model
     def create(self, vals):
-        # Cambiar el estado del vehículo a alquilado al crear una reserva
-        reserva = super(RentingReservas, self).create(vals)
+        reserva = super(Vuelos, self).create(vals)
         reserva.vehiculo_id.write({'estado': 'alquilado'})
         return reserva
 
     def unlink(self):
-        # Cambiar el estado del vehículo a disponible al eliminar una reserva
         for reserva in self:
             reserva.vehiculo_id.write({'estado': 'disponible'})
-        return super(RentingReservas, self).unlink()
+        return super(Reservas, self).unlink()
 
 
     @api.constrains('fecha_reserva')
